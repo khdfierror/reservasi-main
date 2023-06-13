@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Pengaturan;
+namespace App\Filament\Resources\Management;
 
-use App\Filament\Resources\Pengaturan\WarnaResource\Pages;
-use App\Filament\Resources\Pengaturan\WarnaResource\RelationManagers;
-use App\Models\System\Tipe;
-use App\Models\System\Warna;
+use App\Filament\Resources\Management\KilometerResource\Pages;
+use App\Filament\Resources\Management\KilometerResource\RelationManagers;
+use App\Models\Service\Kilometer;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -14,39 +13,36 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class WarnaResource extends Resource
+class KilometerResource extends Resource
 {
-    protected static ?string $model = Warna::class;
+    protected static ?string $model = Kilometer::class;
 
-    protected static ?string $navigationIcon = 'carbon-color-palette';
+    protected static ?int $navigationSort = 2;
+
+    protected static ?string $navigationIcon = 'carbon-forward-10';
 
     protected static function getNavigationLabel(): string
     {
-        return "Warna";
+        return "Kilometer";
     }
 
     public static function getPluralLabel(): string
     {
-        return "Warna";
+        return "Kilometer";
     }
 
-    protected static ?string $navigationGroup = 'System Management';
+    protected static ?string $navigationGroup = 'Service Management';
 
-    protected static ?string $slug = 'system/warna';
-
-    protected static ?int $navigationSort = 5;
-
+    protected static ?string $slug = 'management/kilometer';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('tipe_id')
-                ->label('Tipe')
-                ->relationship('tipe', 'nama'),
-
                 Forms\Components\TextInput::make('nama')
-                ->label('Nama')
+                ->label('Kilometer')
+                ->maxLength(255)
+                ->required(),
             ]);
     }
 
@@ -56,12 +52,8 @@ class WarnaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('tipe.nama'),
-                Tables\Columns\TextColumn::make('nama'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('nama')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -78,7 +70,7 @@ class WarnaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageWarnas::route('/'),
+            'index' => Pages\ManageKilometers::route('/'),
         ];
     }    
 }

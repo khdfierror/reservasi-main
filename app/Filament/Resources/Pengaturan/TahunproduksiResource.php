@@ -53,6 +53,8 @@ class TahunproduksiResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('tipe.nama'),
                 Tables\Columns\TextColumn::make('nama'),
                 Tables\Columns\TextColumn::make('created_at')

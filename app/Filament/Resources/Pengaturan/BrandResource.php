@@ -55,6 +55,8 @@ class BrandResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('merek.nama'),
                 Tables\Columns\TextColumn::make('nama'),
                 Tables\Columns\TextColumn::make('created_at')

@@ -20,4 +20,9 @@ class Warna extends Model
     {
         return $this->belongsTo(Tipe::class);
     }
+
+    public function mobil()
+    {
+        return $this->hasMany(Mobil::class);
+    }
 }

@@ -19,7 +19,7 @@ class MerekResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationIcon = 'carbon-sigma';
+    protected static ?string $navigationIcon = 'carbon-logo-yelp';
 
     protected static function getNavigationLabel(): string
     {
@@ -49,6 +49,8 @@ class MerekResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('nama'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),

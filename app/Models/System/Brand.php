@@ -16,8 +16,19 @@ class Brand extends Model
         'nama',
     ];
 
+
     public function merek()
     {
         return $this->belongsTo(Merek::class);
+    }
+
+    public function tipe()
+    {
+        return $this->hasMany(Tipe::class);
+    }
+
+    public function mobil()
+    {
+        return $this->hasMany(Mobil::class);
     }
 }

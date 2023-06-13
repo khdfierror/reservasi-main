@@ -18,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Models\System\Tipe::class => \App\Policies\System\TipePolicy::class,
         \App\Models\System\Tahunproduksi::class => \App\Policies\System\TahunproduksiPolicy::class,
         \App\Models\System\Warna::class => \App\Policies\System\WarnaPolicy::class,
+        \App\Models\Service\Mobil::class => \App\Policies\Service\MobilPolicy::class,
     ];
 
     /**

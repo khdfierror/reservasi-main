@@ -30,4 +30,9 @@ class Tipe extends Model
     {
         return $this->hasMany(Warna::class);
     }
+
+    public function mobil()
+    {
+        return $this->hasMany(Mobil::class);
+    }
 }
