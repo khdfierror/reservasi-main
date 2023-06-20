@@ -82,7 +82,6 @@ class UserResource extends Resource
     {
         $table
             ->columns([
-                TextColumn::make('id')->sortable()->label(trans('filament-user::user.resource.id')),
                 TextColumn::make('name')->sortable()->searchable()->label(trans('filament-user::user.resource.name')),
                 TextColumn::make('email')->sortable()->searchable()->label(trans('filament-user::user.resource.email')),
                 Tables\Columns\TextColumn::make('created_at')->label(trans('filament-user::user.resource.created_at'))

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservasi', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('no_handphone');
+            
             $table->timestamps();
         });
     }
