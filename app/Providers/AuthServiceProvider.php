@@ -20,6 +20,8 @@ class AuthServiceProvider extends ServiceProvider
         \App\Models\System\Warna::class => \App\Policies\System\WarnaPolicy::class,
         \App\Models\Service\Mobil::class => \App\Policies\Service\MobilPolicy::class,
         \App\Models\Service\Kilometer::class => \App\Policies\Service\KilometerPolicy::class,
+        \App\Models\Service\Reservasi::class => \App\Policies\Service\ReservasiPolicy::class,
+
     ];
 
     /**

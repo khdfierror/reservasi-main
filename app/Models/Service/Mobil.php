@@ -7,6 +7,7 @@ use App\Models\System\Merek;
 use App\Models\System\Brand;
 use App\Models\System\Tipe;
 use App\Models\System\Warna;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,7 @@ class Mobil extends Model
     protected $table = 'mobil';
 
     protected $fillable = [
+        'user_id',
         'merek_id',
         'brand_id',
         'tipe_id',
@@ -30,6 +32,11 @@ class Mobil extends Model
     protected $cast = [
         'expired_stnk' => 'date',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function merek()
     {
@@ -55,6 +62,11 @@ class Mobil extends Model
     public function warna()
     {
         return $this->belongsTo(Warna::class);
+    }
+
+    public function reservasi()
+    {
+        return $this->hasMany(Reservasi::class);
     }
 
 }

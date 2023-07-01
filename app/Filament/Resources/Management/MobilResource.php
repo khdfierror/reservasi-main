@@ -8,6 +8,7 @@ use App\Models\System\Merek;
 use App\Models\System\Brand;
 use App\Models\System\Tipe;
 use App\Models\Service\Mobil;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -41,8 +42,22 @@ class MobilResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $user = auth()->user();
+        
         return $form
             ->schema([
+
+                
+
+                Forms\Components\Select::make('user_id')
+                ->label('User')
+                ->options(User::all()->pluck('name', 'id')->toArray())
+                ->required()
+                ->reactive()
+                ->afterStateUpdated(fn (callable $set) => $set('merek_id', null))
+                ->hidden(!$user->hasRole('super_admin') ),
+            
+
                 Forms\Components\Select::make('merek_id')
                 ->label('Merek')
                 ->options(Merek::all()->pluck('nama', 'id')->toArray())
@@ -118,14 +133,31 @@ class MobilResource extends Resource
 
 
             ]);
+
+        // if ($user->role === 'super_admin') {
+        //     Forms\Components\Select::make('user_id')
+        //         ->label('User')
+        //         ->options(User::all()->pluck('name', 'id')->toArray())
+        //         ->required()
+        //         ->reactive()
+        //         ->afterStateUpdated(fn (callable $set) => $set('merek_id', null));
+        // }
+
+        // return null;
+
+
     }
 
     public static function table(Table $table): Table
     {
+        $user = auth()->user();
+        
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->sortable()
+                    ->searchable()
+                    ->hidden(!$user->hasRole('super_admin')),
                 Tables\Columns\TextColumn::make('merek.nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('brand.nama')

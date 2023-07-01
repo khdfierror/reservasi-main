@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mobil', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id');
+            $table->foreignId('user_id');
             $table->foreignId('merek_id');
             $table->foreignId('brand_id');
             $table->foreignId('tipe_id');

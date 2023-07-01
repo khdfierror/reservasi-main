@@ -43,4 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function mobil()
+    {
+        return $this->hasMany(Mobil::class);
+    }
+
+    public function reservasi()
+    {
+        return $this->hasMany(Reservasi::class);
+    }
+    
 }

@@ -44,10 +44,12 @@ class BrandResource extends Resource
             ->schema([
                 Forms\Components\Select::make('merek_id')
                 ->label('Merek')
-                ->relationship('merek', 'nama'),
+                ->relationship('merek', 'nama')
+                ->required(),
 
                 Forms\Components\TextInput::make('nama')
                 ->label('Nama')
+                ->required(),
             ]);
     }
 

@@ -43,10 +43,13 @@ class WarnaResource extends Resource
             ->schema([
                 Forms\Components\Select::make('tipe_id')
                 ->label('Tipe')
-                ->relationship('tipe', 'nama'),
+                ->relationship('tipe', 'nama')
+                ->required(),
 
                 Forms\Components\TextInput::make('nama')
                 ->label('Nama')
+                ->required(),
+                
             ]);
     }
 

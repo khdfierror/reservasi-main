@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('no_handphone');
-            
+            $table->foreignId('merek_id');
+            $table->foreignId('mobil_id');
+            $table->foreignId('kilometer_id');
+            $table->date('tgl_service');
+            $table->date('waktu');
             $table->timestamps();
         });
     }

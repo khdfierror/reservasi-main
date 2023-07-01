@@ -3,6 +3,7 @@
 namespace App\Models\System;
 
 use App\Models\Service\Mobil;
+use App\Models\Service\Reservasi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,11 @@ class Merek extends Model
     public function brand()
     {
         return $this->hasMany(Brand::class);
+    }
+
+    public function reservasi()
+    {
+        return $this->hasMany(Reservasi::class);
     }
 
 }

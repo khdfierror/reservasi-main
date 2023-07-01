@@ -15,5 +15,9 @@ class Kilometer extends Model
         'nama'
     ];
 
+    public function reservasi()
+    {
+        return $this->hasMany(Reservasi::class);
+    }
     
 }

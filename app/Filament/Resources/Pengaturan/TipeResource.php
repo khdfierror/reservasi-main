@@ -44,10 +44,13 @@ class TipeResource extends Resource
             ->schema([
             Forms\Components\Select::make('brand_id')
             ->label('Brand')
-            ->relationship('brand', 'nama'),
+            ->relationship('brand', 'nama')
+            ->required(),
 
             Forms\Components\TextInput::make('nama')
             ->label('Nama')
+            ->required(),
+
             ]);
     }
 
